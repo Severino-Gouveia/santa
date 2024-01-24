@@ -71,24 +71,19 @@
   </section><!-- End Hero -->
 
 
-  
-<!-- ======= form Section ======= -->
+  <!-- ======= form Section ======= -->
 <section id="about" class="about">
   <div class="container">
-
     <div class="section-title">
-      
       <h2>Equipe do {{ domingo }}</h2>
       <div class="container mt-5">
         <div class="row justify-content-center">
           <div class="col-md-6">
-            <form id="meuFormulario" action="#" method="post">
+            <form id="meuFormulario" action="{{ url_for('enviar') }}" method="post">
               <div class="form-group">
                 <label for="nome">Nome:</label>
                 <input type="text" class="form-control" id="nome" name="nome" required>
               </div>
-             
-          
               <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="tocar" name="tocar">
                 <label class="form-check-label" for="tocar">Irá tocar?</label>
@@ -98,12 +93,12 @@
                 <label class="form-check-label" for="cantar">Irá cantar?</label>
               </div>
               <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="cantar" name="cantar">
-                <label class="form-check-label" for="cantar">de manha?</label>
+                <input type="checkbox" class="form-check-input" id="cantar_manha" name="cantar_manha">
+                <label class="form-check-label" for="cantar_manha">de manhã?</label>
               </div>
               <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="cantar" name="cantar">
-                <label class="form-check-label" for="cantar">á tarde?</label>
+                <input type="checkbox" class="form-check-input" id="cantar_tarde" name="cantar_tarde">
+                <label class="form-check-label" for="cantar_tarde">à tarde?</label>
               </div>
               <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="receberEmailCheckbox" name="receberEmailCheckbox">
@@ -121,6 +116,7 @@
     </div>
   </div>
 </section><!-- End form Section -->
+
 
 <!-- Inclua o jQuery antes do Bootstrap JavaScript -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

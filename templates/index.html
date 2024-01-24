@@ -152,6 +152,32 @@
 </section>
 <!-- End carousel-item Section -->
 
+<!-- templates/exibir_dados.html -->
+<h1>Dados Persistidos</h1>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Tocar</th>
+            <th>Cantar</th>
+            <th>De Manhã</th>
+            <th>A Tarde</th>
+          
+        </tr>
+    </thead>
+    <tbody>
+        {% for resposta in respostas %}
+            <tr>
+                <td>{{ resposta.nome }}</td>
+                <td>{{ "Sim" if resposta.tocar else "Não" }}</td>
+                <td>{{ "Sim" if resposta.cantar else "Não" }}</td>
+                <td>{{ "Sim" if resposta.de_manha else "Não" }}</td>
+                <td>{{ "Sim" if resposta.a_tarde else "Não" }}</td>
+                
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
      <!-- ======= Contact Section ======= -->
      <section id="contact" class="contact">
@@ -222,7 +248,9 @@
 
       </div>
     </section><!-- End Contact Section -->
-   
+    
+
+    
 
   <!-- ======= Footer ======= -->
   <footer id="footer">

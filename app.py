@@ -1,9 +1,14 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+import pandas as pd
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///dados.db'
 db = SQLAlchemy(app)
+
+# Configuração do Flask-Migrate
+migrate = Migrate(app, db)
 
 class Resposta(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -15,6 +20,7 @@ class Resposta(db.Model):
     receber_email = db.Column(db.Integer)
     email = db.Column(db.String(100))
 
+# Routes...
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -24,8 +30,8 @@ def enviar():
     nome = request.form['nome']
     tocar = 1 if 'tocar' in request.form else 0
     cantar = 1 if 'cantar' in request.form else 0
-    de_manha = 1 if 'de_manha' in request.form else 0
-    a_tarde = 1 if 'a_tarde' in request.form else 0
+    de_manha = 1 if 'cantar_manha' in request.form else 0
+    a_tarde = 1 if 'cantar_tarde' in request.form else 0
     receber_email = 1 if 'receberEmailCheckbox' in request.form else 0
     email = request.form['email'] if receber_email else None
 
@@ -35,7 +41,10 @@ def enviar():
 
     return "Dados enviados com sucesso!"
 
-
+@app.route('/dados', methods=['GET'])
+def exibir_dados():
+    respostas = Resposta.query.all()
+    return render_template('index.html', respostas=respostas)
 
 @app.route('/form.html/<domingo>', methods=['GET', 'POST'])
 def form(domingo):
@@ -45,5 +54,9 @@ def form(domingo):
     return render_template('form.html', domingo=domingo)
 
 if __name__ == '__main__':
-    db.create_all()
+    with app.app_context():
+        db.create_all()
+
+    # Run the Flask application
     app.run(debug=True)
+
