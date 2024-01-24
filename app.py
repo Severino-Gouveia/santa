@@ -39,7 +39,8 @@ def enviar():
     db.session.add(resposta)
     db.session.commit()
 
-    return "Dados enviados com sucesso!"
+    return redirect(url_for('index'))
+   # return "Dados enviados com sucesso!"
 
 @app.route('/dados', methods=['GET'])
 def exibir_dados():
