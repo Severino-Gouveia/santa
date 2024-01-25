@@ -19,10 +19,9 @@ class Resposta(db.Model):
     receber_email = db.Column(db.Integer)
     email = db.Column(db.String(100))
 
-# Routes...
 @app.route('/')
 def index():
-    return redirect(url_for('exibir_dados'))  # Redirect to the /dados route
+    return redirect(url_for('exibir_dados'))
 
 @app.route('/enviar', methods=['POST'])
 def enviar():
@@ -49,14 +48,24 @@ def exibir_dados():
 def form(domingo):
     if request.method == 'POST':
         # Lógica de processamento do formulário, se necessário
-        return redirect(url_for('index'))  # Redireciona para a página inicial após o envio do formulário
+        return redirect(url_for('index'))
+
     return render_template('form.html', domingo=domingo)
+
+@app.route('/apagar_dados', methods=['GET', 'POST'])
+def apagar_dados():
+    if request.method == 'POST':
+        Resposta.query.delete()
+        db.session.commit()
+        return redirect(url_for('index'))
+
+    return render_template('index.html')
 
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
 
-    # Run the Flask application
+    # Executar o aplicativo Flask
     app.run(debug=True)
 
 

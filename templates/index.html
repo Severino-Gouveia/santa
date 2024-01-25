@@ -19,8 +19,6 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-
-
   <!-- Vendor CSS Files -->
 <link href="{{ url_for('static', filename='vendor/aos/aos.css') }}" rel="stylesheet">
 <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -220,6 +218,17 @@
       </div>
     </section><!-- Equipes Section -->
 
+    <div class="container mt-5">
+      <h2>Apagar Dados</h2>
+      
+      <form method="POST" action="{{ url_for('apagar_dados') }}">
+        <p>Você tem certeza que deseja apagar todos os dados?</p>
+        
+        <button type="submit" class="btn btn-danger">Apagar Dados</button>
+    </form>
+
+  </div>
+
      <!-- ======= Contact Section ======= -->
      <section id="contact" class="contact">
       <div class="container">
@@ -322,7 +331,6 @@
 
   <!-- Template Main JS File -->
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-
 
 </body>
 
