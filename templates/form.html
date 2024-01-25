@@ -18,6 +18,10 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
+  <!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+
   <!-- Vendor CSS Files -->
   <link href="{{ url_for('static', filename='vendor/aos/aos.css') }}" rel="stylesheet">
   <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -70,8 +74,9 @@
     </div>
   </section><!-- End Hero -->
 
+ 
 
-  <!-- ======= form Section ======= -->
+<!-- ======= form Section ======= -->
 <section id="about" class="about">
   <div class="container">
     <div class="section-title">
@@ -108,7 +113,8 @@
                 <label for="email">E-mail:</label>
                 <input type="email" class="form-control" id="email" name="email">
               </div>
-              <button type="submit" class="btn btn-primary mt-3">Enviar</button>
+              
+              <button type="submit" class="btn btn-primary mt-3" id="submitButton">Enviar</button>
             </form>
           </div>
         </div>
@@ -116,6 +122,17 @@
     </div>
   </div>
 </section><!-- End form Section -->
+
+    <!-- Incluir o modal de sucesso -->
+    {% include 'modal.html' %}
+
+    <!-- Seus scripts, etc. -->
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 
 <!-- Inclua o jQuery antes do Bootstrap JavaScript -->

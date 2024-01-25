@@ -19,9 +19,13 @@ class Resposta(db.Model):
     receber_email = db.Column(db.Integer)
     email = db.Column(db.String(100))
 
+from flask import render_template
+
 @app.route('/')
 def index():
-    return redirect(url_for('exibir_dados'))
+    respostas = Resposta.query.all()
+    return render_template('index.html', respostas=respostas)
+
 
 @app.route('/enviar', methods=['POST'])
 def enviar():

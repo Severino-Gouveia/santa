@@ -218,16 +218,48 @@
       </div>
     </section><!-- Equipes Section -->
 
+     <!-- Incluir o modal de sucesso -->
+   {% include 'modal.html' %}
+
+   <!-- Seus scripts, etc. -->
+
+    
     <div class="container mt-5">
       <h2>Apagar Dados</h2>
       
       <form method="POST" action="{{ url_for('apagar_dados') }}">
-        <p>Você tem certeza que deseja apagar todos os dados?</p>
-        
-        <button type="submit" class="btn btn-danger">Apagar Dados</button>
-    </form>
-
+          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#confirmModal">
+              Apagar Dados
+          </button>
+  
+          <!-- Modal -->
+          <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="confirmModalLabel">Confirmação</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                      <div class="modal-body">
+                          Você tem certeza que deseja apagar todos os dados?
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                          <button type="submit" class="btn btn-danger">Apagar Dados</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </form>
   </div>
+  
+  <!-- Adicione o jQuery e o Bootstrap JS ao seu projeto -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+  
+
 
      <!-- ======= Contact Section ======= -->
      <section id="contact" class="contact">
