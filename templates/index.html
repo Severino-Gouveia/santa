@@ -151,47 +151,74 @@
   </div>
 </section>
 <!-- End carousel-item Section -->
+    
+     <!-- ======= Equipes Section ======= -->
+     <section id="contact" class="contact">
+      <div class="container">
 
-<style>
-  table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-  }
-  th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: center;
-  }
-  th {
-      background-color: #f2f2f2;
-  }
-</style>
-</head>
-<body>
-<h1>Dados Persistidos</h1>
-<table>
-  <thead>
-      <tr>
-          <th>Nome</th>
-          <th>Tocar</th>
-          <th>Cantar</th>
-          <th>De Manhã</th>
-          <th>A Tarde</th>
-      </tr>
-  </thead>
-  <tbody>
-      {% for resposta in respostas %}
-          <tr>
-              <td>{{ resposta.nome }}</td>
-              <td>{{ "Sim" if resposta.tocar else "Não" }}</td>
-              <td>{{ "Sim" if resposta.cantar else "Não" }}</td>
-              <td>{{ "Sim" if resposta.de_manha else "Não" }}</td>
-              <td>{{ "Sim" if resposta.a_tarde else "Não" }}</td>
-          </tr>
-      {% endfor %}
-  </tbody>
-</table>
+        <div class="section-title">
+          <h2>Equipes</h2>
+        </div>
+        <div class="container mt-5">
+          <!-- Manhã -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Equipe 1° domingo manhã</h3>
+            </div>
+            <div class="card-body">
+              <table class="table table-bordered">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>Nome</th>
+                    <th>Função</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for resposta in respostas %}
+                    {% if resposta.de_manha %}
+                      <tr>
+                        <td>{{ resposta.nome }}</td>
+                        <td>{{ "Tocar" if resposta.tocar else "" }}{{ "Cantar" if resposta.cantar else "" }}</td>
+                      </tr>
+                    {% endif %}
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="container mt-5">
+          <!-- Tarde -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Equipe 1° domingo tarde</h3>
+            </div>
+            <div class="card-body">
+              <table class="table table-bordered">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>Nome</th>
+                    <th>Função</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for resposta in respostas %}
+                    {% if resposta.a_tarde %}
+                      <tr>
+                        <td>{{ resposta.nome }}</td>
+                        <td>{{ "Tocar" if resposta.tocar else "" }}{{ "Cantar" if resposta.cantar else "" }}</td>
+                      </tr>
+                    {% endif %}
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- Equipes Section -->
 
      <!-- ======= Contact Section ======= -->
      <section id="contact" class="contact">

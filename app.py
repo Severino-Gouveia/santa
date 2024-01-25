@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-import pandas as pd
 from flask_migrate import Migrate
 
 app = Flask(__name__)
@@ -23,7 +22,7 @@ class Resposta(db.Model):
 # Routes...
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return redirect(url_for('exibir_dados'))  # Redirect to the /dados route
 
 @app.route('/enviar', methods=['POST'])
 def enviar():
@@ -40,7 +39,6 @@ def enviar():
     db.session.commit()
 
     return redirect(url_for('index'))
-   # return "Dados enviados com sucesso!"
 
 @app.route('/dados', methods=['GET'])
 def exibir_dados():
@@ -60,4 +58,5 @@ if __name__ == '__main__':
 
     # Run the Flask application
     app.run(debug=True)
+
 
